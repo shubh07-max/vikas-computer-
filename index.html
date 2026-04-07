@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIKAS COMPUTER CLASSES</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Background */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="white" opacity="0.05"/><circle cx="50" cy="10" r="0.8" fill="white" opacity="0.08"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Main Logo */
+        .logo {
+            font-size: 4.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255,255,255,0.8);
+            animation: glow 2s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes glow {
+            from { 
+                text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffd700;
+            }
+            to { 
+                text-shadow: 0 0 30px #fff, 0 0 40px #ffd700, 0 0 50px #ff6b35;
+            }
+        }
+
+        .directed {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Course Banner */
+        .courses {
+            background: rgba(0,0,0,0.9);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .course-title {
+            color: #ffd700;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px #ffd700;
+        }
+
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .course {
+            background: linear-gradient(145deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .course:hover::before {
+            left: 100%;
+        }
+
+        .course:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(102,126,234,0.6);
+        }
+
+        /* Address Section */
+        .address {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .address-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            animation: bounce 2s infinite;
+            text-shadow: 0 0 20px rgba(255,255,255,0.8);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .address-main {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .address-details {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Services */
+        .services {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #333;
+            position: relative;
+        }
+
+        .services h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.4s ease;
+            border-top: 5px solid #667eea;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .service-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .service-desc {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Contact */
+        .contact {
+            background: #1a1a2e;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto 50px;
+        }
+
+        .contact-item {
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-10px);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .contact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f0f23;
+            color: #ccc;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo { font-size: 3rem; }
+            .directed { font-size: 1.3rem; }
+            .course-list { flex-direction: column; align-items: center; }
+            .address-main { font-size: 2rem; }
+            .service-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Scroll Progress */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ffd23f);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progress"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <h1 class="logo">VIKAS COMPUTER CLASSES</h1>
+        <p class="directed">directed by - Vikas Singh</p>
+    </header>
+
+    <!-- Courses Banner -->
+    <section class="courses">
+        <h2 class="course-title">📚 Available Courses</h2>
+        <div class="course-list">
+            <div class="course">🎓 ADCA</div>
+            <div class="course">🏆 O-LEVEL</div>
+            <div class="course">💻 DCA</div>
+            <div class="course">🖨️ DTP</div>
+            <div class="course">✅ CCC</div>
+            <div class="course">📱 MOBILE REPAIRING</div>
+            <div class="course">⚙️ HARDWARE</div>
+            <div class="course">📊 TALLY</div>
+            <div class="course">🌐 WEB DESIGNING</div>
+            <div class="course">🎨 GRAPHIC DESIGNING</div>
+        </div>
+    </section>
+
+    <!-- Address -->
+    <section class="address">
+        <i class="fas fa-map-marker-alt address-icon" style="font-size: 5rem;"></i>
+        <h2 class="address-main">🏠 Our Location</h2>
+        <div class="address-details">
+            📍 Infront of Jyoti Netralaya<br>
+            Chahaniya, Chandauli<br>
+            <strong>Uttar Pradesh - 232107</strong>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <h2>✨ Why Choose Us?</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-icon">👨‍🏫</div>
+                <h3 class="service-title">Expert Trainers</h3>
+                <p class="service-desc">10+ years experienced faculty with industry certifications and practical knowledge.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3 class="service-title">Modern Infrastructure</h3>
+                <p class="service-desc">Latest computers, high-speed internet, AC classrooms and updated software.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏆</div>
+                <h3 class="service-title">100% Results</h3>
+                <p class="service-desc">Guaranteed certification with 100% placement assistance and job support.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⏰</div>
+                <h3 class="service-title">Flexible Batches</h3>
+                <p class="service-desc">Morning, evening and weekend batches available as per your convenience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <div class="contact-grid">
+            <div class="contact-item">
+                <span class="contact-icon">📞</span>
+                <h3>Call Now</h3>
+                <p><strong>7309379737</strong></p>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">✉️</span>
+                <h3>Email Us</h3>
+                <p><strong>shubhsurwanshi07@gmail.com</strong></p>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">⏰</span>
+                <h3>Class Timing</h3>
+                <p>10:00 AM - 08:00 PM<br>(All Days Open)</p>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">💰</span>
+                <h3>Fees</h3>
+                <p>Affordable Fees<br>EMI Available<br>Scholarship Available</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 VIKAS COMPUTER CLASSES | Directed by Vikas Singh | Infront of Jyoti Netralaya, Chahaniya, Chandauli - 232107 | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('progress').style.width = scrollPercent + '%';
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Course Hover Effects
+        document.querySelectorAll('.course').forEach(course => {
+            course.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1.05)';
+                }, 150);
+            });
+        });
+
+        // Header Typing Effect
+        const text = "VIKAS COMPUTER CLASSES";
+        let i = 0;
+        const logo = document.querySelector('.logo');
+        function typeWriter() {
+            if (i < text.length) {
+                logo.textContent = text.slice(0, i + 1);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        setTimeout(typeWriter, 1000);
+    </script>
+</body>
+</html>
